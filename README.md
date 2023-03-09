@@ -4,7 +4,7 @@ A Systematic and Dynamic Pipeline for Single-Cell RNA Sequencing Analysis
 
 **Single cell biological information analysis process**
 
-##### Haplox (2023/02/27)
+##### Update (2023/02/27)
 
 ### Introduction
 
@@ -285,7 +285,7 @@ In order to display the marker gene more intuitively, we using the R package cir
 
 
 
-#### Citations:
+#### References:
 
 [1]R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 
