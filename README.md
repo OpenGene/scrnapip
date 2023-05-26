@@ -1,6 +1,6 @@
 **Single cell biological information analysis process**
 
-##### Haplox (2023/05/26)
+##### Haplox 
 
 ### Introduction
 
