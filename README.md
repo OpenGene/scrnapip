@@ -1,5 +1,6 @@
 **Single cell biological information analysis process**
 
+
 ### Introduction
 
 The types, states, and interactions of cells in human tissues vary greatly. Single-cell transcriptome sequencing (scRNA-SEQ) is a new technique for high-throughput sequencing analysis of the transcriptome in single cell. Single-cell transcriptome sequencing can complement conventional transcriptome sequencing (mRNA-seq: Batch RNA sequencing, comparing the average expression values of genes in all cells of the cell population), revealing the expression situation of all genes in the all-cause group in single cell, including the identified tissue cell types, reflecting the cell heterogeneity between different samples and the tissue microenvironment, so that we can better understand the real state and correlation of each cell in a Bulk tissue. Presents a real and comprehensive cellular world. Currently, single-cell transcriptome sequencing is mostly used in complex multicellular systems such as tumor, developmental, neural, and immune microenvironments.
@@ -8,23 +9,19 @@ The purpose of this tool is connect the analysis of single-cell data into a comp
 
 ## A. Environment set up
 
-### 1. Required software and environment
+### 1. Download docker
 
 ```bash
-#Download fastp
-conda install -c bioconda fastp
-#Download and decompress cellranger
-wget -O cellranger-7.1.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.1.0.tar.gz?Expires=1677511262&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1leHAvY2VsbHJhbmdlci03LjEuMC50YXIuZ3oiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2Nzc1MTEyNjJ9fX1dfQ__&Signature=iP4gsUveuUB0-WDVjtfGo8zqxW9vAa~RX9WLeHwjeH9~PsV3YAPsibucKGUvd9LbRhLZgFIkH9YbdMt0lTFXOL77DuLASDEJxdsYw1a1JbGGfr5ovy-xMDyWhsVuhz-zd~hmjRmTDvck0FwefwZWyUQXNGhcpBn-CVJQrAa5RMAId91NmFk8lKA1-ZBPat-fJ0Ivyq3gnXjkHpsNb3oJw2lgUDtTLVDtnuQo~LRuFLz026RaKgTAhI1YQfw7ug7N4shTtbxo275AWIi870fpizNd-K6npOrGyDAkuB87x8AigJBIpfs2Loi33g9hRXxgs4irjOov5C7c-F3wV7iTjA__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
-tar -xzvf cellranger-7.1.0.tar.gz
+docker pull zhangjing12/scrnapip
 ```
 
-### 2. Install R packages
+### 2. Use docker
 
-```R
-#Enter the R environment and install the required R packages,If this fails, try to install through conda
-install.packages(c('rmarkdown', 'BiocManager','stringi','circlize','logging','optparse','colourpicker', 'formattable', 'msigdbr','readr', 'shinydashboard','shinyWidgets','DT','configr','Seurat'))
-BiocManager::install(c('SingleR','monocle','biomaRt','ggtree','GSVA','qvalue','clusterProfiler','org.Hs.eg.db','org.Mm.eg.db','ReactomePA'))
+```bash
+docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=20022 -e GROUPID=20022 -v /thinker:/thinker zhangjing12/scrnapip
 ```
+
+The image is created based on Rocker (https://rocker-project.org/images/versioned/rstudio.html). You can use the above command to access rstudio through port 8787, which is more convenient for users to use the process. The userid and groupid can be queried through the id command. For the port number, please confirm whether the corresponding port is open.
 
 
 
@@ -170,6 +167,8 @@ Cellranger results after mapping and quantitative.
 
 Cellranger web report.
 
+
+
 ### 3. CellFilter
 
 Filter low-quality cells according to mitochondrial proportion and gene number
@@ -186,10 +185,14 @@ Filter low-quality cells according to mitochondrial proportion and gene number
 
 ![filter](readme_files/S1_countVfeature.png)
 
-Scatter plot of feature and UMIs for all cells.Filter the cells outside the two red lines
+Scatter plot of feature and UMIs for all cells.Filter the cells outside the two red lines.
+
+
 
 ![filter](readme_files/S1_countVmt.png)
 Scatter plot of  percent mitochondria and UMIs for all cells.Filter the cells above the red lines.
+
+
 
 ### 4. PCA_UMAP
 
@@ -215,10 +218,14 @@ Dimensionality reduction and clustering to filtered cells.Annotate cells with si
 
 ![cluster](readme_files/plotby_cluster.png)
 The single cell expression matrix was reduced and clustering to obtain the final umap plot. The dots represent cells, and clusters split by colors.
+
 ![sample](readme_files/plotall_ident.png)
-The distribution of samples in umap is shown. The dots represent cells, and samples split by colors .
+The distribution of samples in umap is shown. The dots represent cells, and samples split by colors.
+
 ![singleR](readme_files/celltype.png)
 UMAP plot for cell type annotation.
+
+
 
 ### 5. BatchCorrected
 
@@ -246,11 +253,19 @@ Find marker genes and display result by violin and feature umap.
 
 Umap plot of top10 marker gene  for each cluster.
 
+
+
 ![marker_violin](readme_files/cluster0_genevlnplot.png)
 
  Violin plot of top 10 marker gene for each cluster.
 
+
+
 ![scRNASeq](readme_files/cluster_top10geneheatmap.png)
+
+Heatmap of top 10 marker gene for each cluster.
+
+
 
 ### 6. Pseudotime
 
@@ -281,13 +296,15 @@ To perform pseudotime analysis of the cells,we used monocle2  to select high dis
 
 Cell trajectory plot drawed by monocle.
 
+
+
 ### 7. Cerebro
 
 Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise.Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D,bar plot,violin plot,cluster tree etc.
 
 ![cerebro](readme_files/cerebro.png)
 
-### 8. clusterProfiler
+### 8. ClusterProfiler
 
 Gene pathway enrichment analysis is to find a class of overexpressed genes in a set of genes. Here, based on five databases including BIOCARTA, BioCyc, GO, KEGG, and reactome, we perform enrichment analysis on the marker genes of the cluster respectively.
 
@@ -309,13 +326,17 @@ Gene pathway enrichment analysis is to find a class of overexpressed genes in a 
            └── <prefix>.Reactome_Enrich.xls          <- Gene enrichment analysis results based on reactome database
 ```
 
-![clusterProfiler](readme_files/patho.go.png)
+![clusterProfiler](/C:\Users\Administrator\Desktop\工作\单细胞流程文章\workflow_document/readme_files/patho.go.png)
 
-Barplot with significantly enriched GO terms
+Barplot with significantly enriched GO terms.
+
+
 
 ![keggbubbleplot](readme_files/patho.KEGG.png)
 
 The bubble plot for KEGG enriched analysis.
+
+
 
 ### 9. Copykat
 
@@ -352,6 +373,8 @@ Copykat(Copynumber Karyotyping of Tumors) is a computational tool using integrat
 
 Heatmap of copykat prediction results.
 
+
+
 ### 10. genomicInstability
 
 Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
@@ -366,6 +389,8 @@ Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively est
 <img src="readme_files/genomicInstability.png" title="" alt="genomicInstability" data-align="center">
 
 The genomic Instability score density plot.
+
+
 
 ### 11. CellChat
 
@@ -397,9 +422,11 @@ CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts 
        └── <prefix>.CytoTRACE.table.txt               <- Table containing cytotrace scores and cell names
 ```
 
-![cytotrace](readme_files/cytotest.CytoTRACE.boxplot_raw.png)
+![cytotrace](/C:\Users\Administrator\Desktop\工作\单细胞流程文章\workflow_document/readme_files/cytotest.CytoTRACE.boxplot_raw.png)
 
 Boxplots ordered by median cytotrace score.
+
+
 
 #### Citations:
 
