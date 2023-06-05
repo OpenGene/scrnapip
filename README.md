@@ -326,7 +326,7 @@ Gene pathway enrichment analysis is to find a class of overexpressed genes in a 
            └── <prefix>.Reactome_Enrich.xls          <- Gene enrichment analysis results based on reactome database
 ```
 
-![clusterProfiler](readme_files/patho.go.png)
+![clusterProfiler](readme_files/patho.go.png)
 
 Barplot with significantly enriched GO terms.
 
