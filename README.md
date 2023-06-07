@@ -422,7 +422,7 @@ CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts 
        └── <prefix>.CytoTRACE.table.txt               <- Table containing cytotrace scores and cell names
 ```
 
-![cytotrace](/C:\Users\Administrator\Desktop\工作\单细胞流程文章\workflow_document/readme_files/cytotest.CytoTRACE.boxplot_raw.png)
+![cytotrace](readme_files/cytotest.CytoTRACE.boxplot_raw.png)
 
 Boxplots ordered by median cytotrace score.
 
