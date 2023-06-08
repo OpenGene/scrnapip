@@ -52,7 +52,7 @@ tempdata="workout"
 fastp=true#run fastp
 
 #####[fastp]:Configure the fastp path and parameters
-fastppath="/usr/fastp"
+fastppath="/home/dataa/fastp"
 longr=26#R1 length after trim
 ncode=5#The maximum number of N-bases
 
@@ -60,7 +60,7 @@ ncode=5#The maximum number of N-bases
 dockerusr="1025:1025"#user id
 dir="/user/name"#The folder which docker mount
 ref="/user/refdata-gex-GRCh38-2020-A"#Reference genome path
-cellrangerpath="/usr/cellranger-6.1.2/cellranger"#software path of cellranger
+cellrangerpath="/home/dataa/cellranger-7.1.0/cellranger"#software path of cellranger
 expectcell=10000#expect cell number
 localcores=32#Number of threads
 localmem=64#Memory size
@@ -88,7 +88,7 @@ reduction="umap"#tSNE or UMAP
 clustercell=true#Whether you need to cluster cells
 resolution=0.6#Set the resolution when clustering
 algorithm=1#Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm
-singler="/singleRdata/test.rds"#singleR database position
+singler="/home/dataa/singleRdata/singleRdata/test.rds"#singleR database position
 
 #####[step4]:
 clustermarkers=true#Whether marker genes of each cluster need to be found
@@ -108,21 +108,21 @@ BEAMgn=50#BEAM analyzes heat map gene count
 BEAMgenelist=["S100A12", "ALOX5AP", "PAD14", "NRG1", "MCEMP1", "THBS1","testgene"]#BEAM analyzes specific gene names
 
 #####[step6]:
-circosbin="/bin/get_exp.r"#Extraction expression
-circos_perl_bin="/bin/circos_plot.pl"#Plot circos
+circosbin="/home/dataa/get_exp.r"#Extraction expression
+circos_perl_bin="/home/dataa/circos_plot.pl"#Plot circos
 
 #####[step7]:
-copykat_bin="/bin/copykat_v4.r"#Identify tumor cells
+copykat_bin="/home/dataa/copykat_v4.r"#Identify tumor cells
 
 #####[step8]:
-cytoTRACE_bin="/bin/cytotrace_230508.R"#Developmental potential analysis
+cytoTRACE_bin="/home/dataa/cytotrace_230508.R"#Developmental potential analysis
 
 #####[step9]:
-genomicinstably_bin="/bin/genomicinstably.R"Genomic instability analysist
+genomicinstably_bin="/home/dataa/genomicinstably.R"Genomic instability analysist
 org="human"#species
 
 #####[step11]:
-ClusterProfiler=["true","Rscript","/bin/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database nam
+ClusterProfiler=["true","Rscript","/home/dataa/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database nam
 ```
 
 ### 2. Filtered data by fastp and cellranger
