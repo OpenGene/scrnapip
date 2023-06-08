@@ -122,7 +122,7 @@ genomicinstably_bin="/home/dataa/genomicinstably.R"Genomic instability analysist
 org="human"#species
 
 #####[step11]:
-ClusterProfiler=["true","Rscript","/home/dataa/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database nam
+ClusterProfiler=["true","Rscript","/home/dataa/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the genes in file;-t:gene name type(SYMBOL,ENTREZID);-d:database name
 ```
 
 ### 2. Filtered data by fastp and cellranger
