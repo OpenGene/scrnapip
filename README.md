@@ -67,6 +67,8 @@ localmem=64#Memory size
 include_introns="false"#Whether to analyze introns
 
 #####[step1]:
+filetype="10x"#The format of the input file,could be "10x" or "csv"
+csv_sep=""#Separator of the csv file
 nFeature_RNA=[200,5000]#The cells were filtered by feature, keeping cells that feature between 200 and 5,000 
 percent_mt=[0,10]#The cells were filtered by percent of mitochondria, keeping cells that percent of mitochondria less than 10%
 mttype="MT"#Mitochondrial type, MT for humans and mt for mice
@@ -77,6 +79,8 @@ normethod="SCT"#The merge method, which uses SCT by default, can also use vst to
 nFeature=3000#Genes for subsequent analysis
 
 #####[step3]:
+recluster=true#Whether to perform batch correction
+mode="harmony"#Method of batch correction
 heatmapnumber=9#Number of heatmaps drawn for pca
 elbowdims=100#The number of PCS shown in the elbow diagram
 dims=30#Select the top 30 PCs for dimensionality reduction
