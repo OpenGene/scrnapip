@@ -18,7 +18,7 @@ docker pull zhangjing12/scrnapip
 ### 2. Use docker
 
 ```bash
-docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=20022 -e GROUPID=20022 -v /thinker:/thinker zhangjing12/scrnapip
+docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youruserid -e GROUPID=yourgroupid -v /yourdatapath:/yourdatapath zhangjing12/scrnapip
 ```
 
 The image is created based on Rocker (https://rocker-project.org/images/versioned/rstudio.html). You can use the above command to access rstudio through port 8787, which is more convenient for users to use the process. The userid and groupid can be queried through the id command. For the port number, please confirm whether the corresponding port is open.
@@ -106,6 +106,19 @@ BEAMgenelist=["S100A12", "ALOX5AP", "PAD14", "NRG1", "MCEMP1", "THBS1","testgene
 #####[step6]:
 circosbin="/bin/get_exp.r"#Extraction expression
 circos_perl_bin="/bin/circos_plot.pl"#Plot circos
+
+#####[step7]:
+copykat_bin="/bin/copykat_v4.r"#Identify tumor cells
+
+#####[step8]:
+cytoTRACE_bin="/bin/cytotrace_230508.R"#Developmental potential analysis
+
+#####[step9]:
+genomicinstably_bin="/bin/genomicinstably.R"Genomic instability analysist
+org="human"#species
+
+#####[step11]:
+ClusterProfiler=["true","Rscript","/bin/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database nam
 ```
 
 ### 2. Filtered data by fastp and cellranger
