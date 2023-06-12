@@ -243,9 +243,6 @@ The distribution of samples in umap is shown. The dots represent cells, and samp
 UMAP plot for cell type annotation.
 
 
-
-### 5. BatchCorrected
-
 ### 5. MarkerGene
 
 Find marker genes and display result by violin and feature umap.
