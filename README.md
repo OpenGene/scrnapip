@@ -15,7 +15,16 @@ The purpose of this tool is connect the analysis of single-cell data into a comp
 docker pull zhangjing12/scrnapip
 ```
 
-### 2. Use docker
+### 2. Download reference genomic
+
+```bash
+#Human reference (GRCh38) dataset required for Cell Ranger.
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+#Mouse reference dataset required for Cell Ranger.
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+```
+
+### 3. Use docker
 
 ```bash
 docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youruserid -e GROUPID=yourgroupid -v /yourdatapath:/yourdatapath zhangjing12/scrnapip
