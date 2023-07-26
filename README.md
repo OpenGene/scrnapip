@@ -27,7 +27,7 @@ wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
 ### 3. Use docker
 
 ```bash
-docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youruserid -e GROUPID=yourgroupid -v /yourdatapath:/yourdatapath zhangjing12/scrnapip
+docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youruserid -e GROUPID=yourgroupid -v /yourdatapath:/dockerpath zhangjing12/scrnapip
 ```
 
 The image is created based on Rocker (https://rocker-project.org/images/versioned/rstudio.html). You can use the above command to access rstudio through port 8787, which is more convenient for users to use the process. The userid and groupid can be queried through the id command. For the port number, please confirm whether the corresponding port is open.
@@ -61,7 +61,7 @@ tempdata="workout"
 fastp=true#run fastp
 
 #####[fastp]:Configure the fastp path and parameters
-fastppath="/home/dataa/fastp"
+fastppath="/home/bin/fastp"
 longr=26#R1 length after trim
 ncode=5#The maximum number of N-bases
 
@@ -69,7 +69,7 @@ ncode=5#The maximum number of N-bases
 dockerusr="1025:1025"#user id
 dir="/user/name"#The folder which docker mount
 ref="/user/refdata-gex-GRCh38-2020-A"#Reference genome path
-cellrangerpath="/home/dataa/cellranger-7.1.0/cellranger"#software path of cellranger
+cellrangerpath="/home/bin/cellranger-7.1.0/cellranger"#software path of cellranger
 expectcell=10000#expect cell number
 localcores=32#Number of threads
 localmem=64#Memory size
@@ -97,7 +97,7 @@ reduction="umap"#tSNE or UMAP
 clustercell=true#Whether you need to cluster cells
 resolution=0.6#Set the resolution when clustering
 algorithm=1#Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm
-singler="/home/dataa/singleRdata/singleRdata/test.rds"#singleR database position
+singler="/home/bin/singleRdata/singleRdata/test.rds"#singleR database position
 
 #####[step4]:
 clustermarkers=true#Whether marker genes of each cluster need to be found
@@ -106,6 +106,7 @@ findmarkers_testuse="wilcox"#The method of finding marker gene
 difcluster.test.a=[0,1]#Find Differential gene.If you want to find differences between samples,change cluster to ident
 difcluster.test.b=[5,6]#Test indicates the group name,a for case and b for control
 difcluster.test.testuse="wilcox"#Inspection method
+ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 6 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of difference analysis results.-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database name
 
 #####[step5]:
 meanexpression=0.5#Select the appropriate gene to mark the state, intercept the condition, default is 0.5
@@ -117,21 +118,21 @@ BEAMgn=50#BEAM analyzes heat map gene count
 BEAMgenelist=["S100A12", "ALOX5AP", "PAD14", "NRG1", "MCEMP1", "THBS1","testgene"]#BEAM analyzes specific gene names
 
 #####[step6]:
-circosbin="/home/dataa/get_exp.r"#Extraction expression
-circos_perl_bin="/home/dataa/circos_plot.pl"#Plot circos
+circosbin="/home/bin/get_exp.r"#Extraction expression
+circos_perl_bin="/home/bin/circos_plot.pl"#Plot circos
 
 #####[step7]:
-copykat_bin="/home/dataa/copykat_v4.r"#Identify tumor cells
+copykat_bin="/home/bin/copykat_v4.r"#Identify tumor cells
 
 #####[step8]:
-cytoTRACE_bin="/home/dataa/cytotrace_230508.R"#Developmental potential analysis
+cytoTRACE_bin="/home/bin/cytotrace_230508.R"#Developmental potential analysis
 
 #####[step9]:
-genomicinstably_bin="/home/dataa/genomicinstably.R"Genomic instability analysist
+genomicinstably_bin="/home/bin/genomicinstably.R"Genomic instability analysist
 org="human"#species
 
 #####[step11]:
-ClusterProfiler=["true","Rscript","/home/dataa/clusterProfiler.test.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#-a:Whether to use all background genes;-s:species;-g:The column of the genes in file;-t:gene name type(SYMBOL,ENTREZID);-d:database name
+ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of marker gene
 ```
 
 ### 2. Filtered data by fastp and cellranger
@@ -139,7 +140,7 @@ ClusterProfiler=["true","Rscript","/home/dataa/clusterProfiler.test.R","-a true 
 This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config.ini.
 
 ```bash
-Rscript fastp_cellranger.r -i config.ini
+Rscript /home/bin/fastp_cellranger.r -i config.ini
 ```
 
 ### 3. Seurat analysis
@@ -147,7 +148,7 @@ Rscript fastp_cellranger.r -i config.ini
 This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config.ini.
 
 ```bash
-Rscript singlecell.r -i config.ini
+Rscript /home/bin/singlecell.r -i config.ini
 ```
 
 ## C. Result
