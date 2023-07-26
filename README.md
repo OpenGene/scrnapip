@@ -140,7 +140,7 @@ ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.
 This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config.ini.
 
 ```bash
-Rscript /home/bin/fastp_cellranger.r -i config.ini
+Rscript /home/bin/fastp_cellranger.r -i config_Example.ini
 ```
 
 ### 3. Seurat analysis
@@ -148,7 +148,7 @@ Rscript /home/bin/fastp_cellranger.r -i config.ini
 This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config.ini.
 
 ```bash
-Rscript /home/bin/singlecell.r -i config.ini
+Rscript /home/bin/singlecell.r -i config_Example.ini
 ```
 
 ## C. Result
