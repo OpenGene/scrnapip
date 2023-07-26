@@ -137,7 +137,7 @@ ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.
 
 ### 2. Filtered data by fastp and cellranger
 
-This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config.ini.
+This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config_Example.ini.
 
 ```bash
 Rscript /home/bin/fastp_cellranger.r -i config_Example.ini
@@ -145,7 +145,7 @@ Rscript /home/bin/fastp_cellranger.r -i config_Example.ini
 
 ### 3. Seurat analysis
 
-This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config.ini.
+This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config_Example.ini.
 
 ```bash
 Rscript /home/bin/singlecell.r -i config_Example.ini
