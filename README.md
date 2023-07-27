@@ -41,31 +41,31 @@ The image is created based on Rocker (https://rocker-project.org/images/versione
 All input files and parameters are set in this configuration file. The main settings that need to be changed are the following：
 
 ```bash
-#####[fastp_cellrange]:RAW data path. The pair end data must be split into two files
+#####[fastp_cellrange]: RAW data path. The pair end data must be split into two files
 S1.R1=["/usr/data/SAMPLE1_S1_L001_R1_001.fastq.gz"]
 S1.R2=["/usr/data/SAMPLE1_S1_L001_R2_001.fastq.gz"]
 #If a sample has more than one raw data,you can merge them before or add path split by ",":
 S1.R1=["/usr/data/SAMPLE1.1_S1_L001_R1_001.fastq.gz","/usr/data/SAMPLE1.2_S1_L001_R1_001.fastq.gz"]
 S1.R2=["/usr/data/SAMPLE1.1_S1_L001_R2_001.fastq.gz","/usr/data/SAMPLE1.2_S1_L001_R2_001.fastq.gz"]
 
-#####[indata]:cellranger matrix file path
+#####[indata]: cellranger matrix file path
 S1="/usr/workout/02.cellranger/S1/outs/filtered_feature_bc_matrix"
 
-#####[outpath]:output path
+#####[outpath]: output path
 outpath="/usr/workout"
 
 #####[tempdata]rds file output path
 tempdata="workout"
 
-#####[run]:The analysis that needs to be done should set to true,for example:
+#####[run]: The analysis that needs to be done should set to true,for example:
 fastp=true#run fastp
 
-#####[fastp]:Configure the fastp path and parameters
+#####[fastp]: Configure the fastp path and parameters
 fastppath="/home/bin/fastp"
 longr=26#R1 length after trim
 ncode=5#The maximum number of N-bases
 
-#####[cellrangle]:Configure the cellranger path and parameters
+#####[cellrangle]: Configure the cellranger path and parameters
 dockerusr="1025:1025"#user id
 dir="/user/name"#The folder which docker mount
 ref="/user/refdata-gex-GRCh38-2020-A"#Reference genome path
@@ -382,7 +382,7 @@ CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts 
 Boxplots ordered by median cytotrace score.
 
 
-### 10. genomicInstability
+### 10. GenomicInstability
 
 Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
 
