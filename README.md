@@ -328,7 +328,93 @@ Cerebro(cell report browser), which allows users to interactively visualize vari
 
 ![cerebro](readme_files/cerebro.png)
 
-### 8. ClusterProfiler
+### 8. Copykat
+
+Copykat is used to perform copy number analysis and predict tumor cells.The umap plot is used to display the results.
+
+Copykat(Copynumber Karyotyping of Tumors) is a computational tool using integrative Bayesian approaches to identify genome-wide aneuploidy at 5MB resolution in single cells to separate tumor cells from normal cells, and tumor subclones using high-throughput sc-RNAseq data.
+
+```bash
+── 08.Copykat/
+     ├── <SampleName1> /
+     │    ├── <SampleName1>_copykat_clustering_results.rds            <- RDS file containing copykat results
+     │    ├── <SampleName1>_copykat_CNA_raw_results_gene_by_cell.txt  <- Expression matrix sorted by absolute position of genes
+     │    ├── <SampleName1>_copykat_CNA_results.txt                   <- Copy number variation of cells at each chromosomal location
+     │    ├── <SampleName1>_copykat_heatmap.jpeg                      <- Heatmap of tumor cell prediction results
+     │    ├── <SampleName1>_copykat.pdf                               <- Heatmap of tumor cell prediction results
+     │    ├── <SampleName1>_copykat_prediction.txt                    <- Tumor cell predicted results of copycat
+     │    ├── <SampleName1>_copykat_with_genes_heatmap.pdf            <- Heatmap of tumor cell prediction results with gene names
+     │    ├── <SampleName1>_rawdata.txt                               <- Raw umi expression matrix
+     │    ├── <SampleName1>.tumor_subtype.pdf                         <- Heatmap of prediction results of tumor subclonal types
+     │    └── <SampleName1>.tumor_subtype.txt                         <- Tumor subclonal type
+     ├── <SampleName2> /
+     ├── ...
+     │
+     ├── copykat.counts.clusterbarplot.pdf/png                        <- Barplot of the cell number by clusters, arranged by tumor cells
+     ├── copykat.counts.samplebarplot.pdf/png                         <- Barplot of the cell number by samples
+     ├── copykat.prop.clusterbarplot.pdf/png                          <- Barplot of the proportion of cell by clusters
+     ├── copykat.prop.samplebarplot.pdf/png                           <- Barplot of the proportion of cell by samples
+     ├── copykat.umap.pdf/png                                         <- Umap plot of tumor cell prediction results
+     ├── copykat.umap.splitsample.pdf/png                             <- Umap plot of tumor cell prediction results splited by samples
+     └── Summary_copykat_prediction.txt                               <- Predicted results for all sample cells
+```
+
+<img src="readme_files/copykat_heatmap.png" title="" alt="copykat" data-align="center">
+
+Heatmap of copykat prediction results.
+
+
+### 9. CytoTRACE
+
+CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts and Expression) is a computational method that predicts the differentiation state of cells from single-cell RNA-sequencing data. CytoTRACE leverages a simple, yet robust, determinant of developmental potential—the number of detectably expressed genes per cell, or gene counts. CytoTRACE have been validated on ~150K single-cell transcriptomes spanning 315 cell phenotypes, 52 lineages, 14 tissue types, 9 scRNA-seq platforms, and 5 species.
+
+```bash
+── 9.CytoTRACE/ 
+       ├── <prefix>.CytoTRACE.boxplot_raw.pdf/png     <- Boxplot of cytotrace scores by cluster 
+       ├── <prefix>.CytoTRACE.boxplot_type.pdf/png    <- Boxplot of cytotrace scores by cell type 
+       ├── <prefix>.cytovalue.FeaturePlot.pdf/png     <- Umap plot characterized by cytotrace scores 
+       ├── <prefix>CytoGenes.pdf                      <- Genes that most correlated with cytotrace score 
+       └── <prefix>.CytoTRACE.table.txt               <- Table containing cytotrace scores and cell names
+```
+
+![cytotrace](readme_files/cytotest.CytoTRACE.boxplot_raw.png)
+
+Boxplots ordered by median cytotrace score.
+
+
+### 10. genomicInstability
+
+Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
+
+```bash
+── 10.genomicInstability/
+     ├── <prefix>_genomicinstability.pdf             <- Density plot of the gene instability score
+     ├── <prefix>_genomicinstability.withanno.pdf    <- Density plot of the gene instability score with annotated information
+     └── <prefix>_gis.result.txt                     <- Table containing genomic instability score and cell names
+```
+
+<img src="readme_files/genomicInstability.png" title="" alt="genomicInstability" data-align="center">
+
+The genomic Instability score density plot.
+
+### 11. CellChat
+
+ CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
+
+```bash
+── 11.CellChat  /
+     ├── bubble /
+     │      └── <CellType>_bubble.pdf        <- A bubble plot showing the strength of gene communication between cell types
+     ├── pathway /
+     │      ├── <GeneName>_circle.pdf        <- Circle plot of gene signaling pathway network of each gene
+     │      └── <GeneName>_hier.pdf          <- Hierarchy plot of gene signaling pathway network of each gene
+     ├── <CellType>_circle.pdf               <- Circle plot of interacting gene numbers of each cell type
+     └── topgeneheatmap.pdf                  <- Circle plot of gene signaling pathway newtwork
+```
+
+<img src="readme_files/cellchat.png" title="" alt="cellchat" data-align="center">
+
+### 12. ClusterProfiler
 
 Gene pathway enrichment analysis is to find a class of overexpressed genes in a set of genes. Here, based on five databases including BIOCARTA, BioCyc, GO, KEGG, and reactome, we perform enrichment analysis on the marker genes of the cluster respectively.
 
@@ -362,93 +448,6 @@ The bubble plot for KEGG enriched analysis.
 
 
 
-### 9. Copykat
-
-Copykat is used to perform copy number analysis and predict tumor cells.The umap plot is used to display the results.
-
-Copykat(Copynumber Karyotyping of Tumors) is a computational tool using integrative Bayesian approaches to identify genome-wide aneuploidy at 5MB resolution in single cells to separate tumor cells from normal cells, and tumor subclones using high-throughput sc-RNAseq data.
-
-```bash
-── 09.Copykat/
-     ├── <SampleName1> /
-     │    ├── <SampleName1>_copykat_clustering_results.rds            <- RDS file containing copykat results
-     │    ├── <SampleName1>_copykat_CNA_raw_results_gene_by_cell.txt  <- Expression matrix sorted by absolute position of genes
-     │    ├── <SampleName1>_copykat_CNA_results.txt                   <- Copy number variation of cells at each chromosomal location
-     │    ├── <SampleName1>_copykat_heatmap.jpeg                      <- Heatmap of tumor cell prediction results
-     │    ├── <SampleName1>_copykat.pdf                               <- Heatmap of tumor cell prediction results
-     │    ├── <SampleName1>_copykat_prediction.txt                    <- Tumor cell predicted results of copycat
-     │    ├── <SampleName1>_copykat_with_genes_heatmap.pdf            <- Heatmap of tumor cell prediction results with gene names
-     │    ├── <SampleName1>_rawdata.txt                               <- Raw umi expression matrix
-     │    ├── <SampleName1>.tumor_subtype.pdf                         <- Heatmap of prediction results of tumor subclonal types
-     │    └── <SampleName1>.tumor_subtype.txt                         <- Tumor subclonal type
-     ├── <SampleName2> /
-     ├── ...
-     │
-     ├── copykat.counts.clusterbarplot.pdf/png                        <- Barplot of the cell number by clusters, arranged by tumor cells
-     ├── copykat.counts.samplebarplot.pdf/png                         <- Barplot of the cell number by samples
-     ├── copykat.prop.clusterbarplot.pdf/png                          <- Barplot of the proportion of cell by clusters
-     ├── copykat.prop.samplebarplot.pdf/png                           <- Barplot of the proportion of cell by samples
-     ├── copykat.umap.pdf/png                                         <- Umap plot of tumor cell prediction results
-     ├── copykat.umap.splitsample.pdf/png                             <- Umap plot of tumor cell prediction results splited by samples
-     └── Summary_copykat_prediction.txt                               <- Predicted results for all sample cells
-```
-
-<img src="readme_files/copykat_heatmap.png" title="" alt="copykat" data-align="center">
-
-Heatmap of copykat prediction results.
-
-
-
-### 10. genomicInstability
-
-Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
-
-```bash
-── 11.genomicInstability/
-     ├── <prefix>_genomicinstability.pdf             <- Density plot of the gene instability score
-     ├── <prefix>_genomicinstability.withanno.pdf    <- Density plot of the gene instability score with annotated information
-     └── <prefix>_gis.result.txt                     <- Table containing genomic instability score and cell names
-```
-
-<img src="readme_files/genomicInstability.png" title="" alt="genomicInstability" data-align="center">
-
-The genomic Instability score density plot.
-
-
-
-### 11. CellChat
-
- CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
-
-```bash
-── 13.CellChat  /
-     ├── bubble /
-     │      └── <CellType>_bubble.pdf        <- A bubble plot showing the strength of gene communication between cell types
-     ├── pathway /
-     │      ├── <GeneName>_circle.pdf        <- Circle plot of gene signaling pathway network of each gene
-     │      └── <GeneName>_hier.pdf          <- Hierarchy plot of gene signaling pathway network of each gene
-     ├── <CellType>_circle.pdf               <- Circle plot of interacting gene numbers of each cell type
-     └── topgeneheatmap.pdf                  <- Circle plot of gene signaling pathway newtwork
-```
-
-<img src="readme_files/cellchat.png" title="" alt="cellchat" data-align="center">
-
-### 12. CytoTRACE
-
-CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts and Expression) is a computational method that predicts the differentiation state of cells from single-cell RNA-sequencing data. CytoTRACE leverages a simple, yet robust, determinant of developmental potential—the number of detectably expressed genes per cell, or gene counts. CytoTRACE have been validated on ~150K single-cell transcriptomes spanning 315 cell phenotypes, 52 lineages, 14 tissue types, 9 scRNA-seq platforms, and 5 species.
-
-```bash
-── 10.CytoTRACE/ 
-       ├── <prefix>.CytoTRACE.boxplot_raw.pdf/png     <- Boxplot of cytotrace scores by cluster 
-       ├── <prefix>.CytoTRACE.boxplot_type.pdf/png    <- Boxplot of cytotrace scores by cell type 
-       ├── <prefix>.cytovalue.FeaturePlot.pdf/png     <- Umap plot characterized by cytotrace scores 
-       ├── <prefix>CytoGenes.pdf                      <- Genes that most correlated with cytotrace score 
-       └── <prefix>.CytoTRACE.table.txt               <- Table containing cytotrace scores and cell names
-```
-
-![cytotrace](readme_files/cytotest.CytoTRACE.boxplot_raw.png)
-
-Boxplots ordered by median cytotrace score.
 
 
 
