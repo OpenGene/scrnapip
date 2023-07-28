@@ -78,7 +78,7 @@ include_introns="false"#Whether to analyze introns
 #####[step1]:
 filetype="10x"#The format of the input file,could be "10x" or "csv"
 csv_sep=""#Separator of the csv file
-nFeature_RNA=[200,5000]#The cells were filtered by feature, keeping cells that feature between 200 and 5,000 
+nFeature_RNA=[200,5000]#The cells were filtered by feature, keeping cells that feature between 200 and 5000 
 percent_mt=[0,10]#The cells were filtered by percent of mitochondria, keeping cells that percent of mitochondria less than 10%
 mttype="MT"#Mitochondrial type, MT for humans and mt for mice
 
@@ -96,7 +96,7 @@ dims=30#Select the top 30 PCs for dimensionality reduction
 reduction="umap"#tSNE or UMAP
 clustercell=true#Whether you need to cluster cells
 resolution=0.6#Set the resolution when clustering
-algorithm=1#Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm
+algorithm=1#Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm)
 singler="/home/bin/singleRdata/singleRdata/test.rds"#singleR database position
 
 #####[step4]:
@@ -104,9 +104,9 @@ clustermarkers=true#Whether marker genes of each cluster need to be found
 min_pct=0.25#The minimum proportion of marker gene in the number of cells is 0.25 by default
 findmarkers_testuse="wilcox"#The method of finding marker gene
 difcluster.test.a=[0,1]#Find Differential gene.If you want to find differences between samples,change cluster to ident
-difcluster.test.b=[5,6]#Test indicates the group name,a for case and b for control
+difcluster.test.b=[5,6]#Test indicates the group name, a for case and b for control
 difcluster.test.testuse="wilcox"#Inspection method
-ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 6 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of difference analysis results.-a:Whether to use all background genes;-s:species;-g:The column of the gene in the file;-t:gene name type(SYMBOL,ENTREZID);-d:database name
+ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 6 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of difference analysis results. -a: Whether to use all background genes; -s: species; -g: The column of the gene in the file; -t: gene name type(SYMBOL,ENTREZID); -d: database name
 
 #####[step5]:
 meanexpression=0.5#Select the appropriate gene to mark the state, intercept the condition, default is 0.5
@@ -194,8 +194,6 @@ Cellranger results after mapping and quantitative.
 
 Cellranger web report.
 
-
-
 ### 3. CellFilter
 
 Filter low-quality cells according to mitochondrial proportion and gene number
@@ -213,7 +211,6 @@ Filter low-quality cells according to mitochondrial proportion and gene number
 ![filter](readme_files/S1_countVfeature.png)
 
 Scatter plot of feature and UMIs for all cells.Filter the cells outside the two red lines.
-
 
 
 ![filter](readme_files/S1_countVmt.png)
@@ -293,7 +290,7 @@ Heatmap of top 10 marker gene for each cluster.
 
 ### 6. Pseudotime
 
-To perform pseudotime analysis of the cells,we used monocle2  to select high discrete gene and draw trajectory diagram.By default, the first branch point is used for beam analysis.If you want to analyze other branch points,setting in the configuration file.
+To perform pseudotime analysis of the cells,we used monocle2 to select high discrete gene and draw trajectory diagram. By default, the first branch point is used for beam analysis.If you want to analyze other branch points, setting in the configuration file.
 
 ```bash
 ── 06.Pseudotime/
@@ -324,15 +321,15 @@ Cell trajectory plot drawed by monocle.
 
 ### 7. Cerebro
 
-Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise.Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D,bar plot,violin plot,cluster tree etc.
+Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise. Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D, bar plot, violin plot, cluster tree etc.
 
 ![cerebro](readme_files/cerebro.png)
 
 ### 8. Copykat
 
-Copykat is used to perform copy number analysis and predict tumor cells.The umap plot is used to display the results.
+Copykat is used to perform copy number analysis and predict tumor cells. The umap plot is used to display the results.
 
-Copykat(Copynumber Karyotyping of Tumors) is a computational tool using integrative Bayesian approaches to identify genome-wide aneuploidy at 5MB resolution in single cells to separate tumor cells from normal cells, and tumor subclones using high-throughput sc-RNAseq data.
+Copykat (Copynumber Karyotyping of Tumors) is a computational tool using integrative Bayesian approaches to identify genome-wide aneuploidy at 5MB resolution in single cells to separate tumor cells from normal cells, and tumor subclones using high-throughput sc-RNAseq data.
 
 ```bash
 ── 08.Copykat/
@@ -399,7 +396,7 @@ The genomic Instability score density plot.
 
 ### 11. CellChat
 
- CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
+CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
 
 ```bash
 ── 11.CellChat  /
