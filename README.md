@@ -58,81 +58,81 @@ outpath="/usr/workout"
 tempdata="workout"
 
 #####[run]: The analysis that needs to be done should set to true,for example:
-fastp=true#run fastp
+fastp=true #run fastp
 
 #####[fastp]: Configure the fastp path and parameters
 fastppath="/home/bin/fastp"
-longr=26#R1 length after trim
-ncode=5#The maximum number of N-bases
+longr=26 #R1 length after trim
+ncode=5 #The maximum number of N-bases
 
 #####[cellrangle]: Configure the cellranger path and parameters
-dockerusr="1025:1025"#user id
-dir="/user/name"#The folder which docker mount
-ref="/user/refdata-gex-GRCh38-2020-A"#Reference genome path
-cellrangerpath="/home/bin/cellranger-7.1.0/cellranger"#software path of cellranger
-expectcell=10000#expect cell number
-localcores=32#Number of threads
-localmem=64#Memory size
-include_introns="false"#Whether to analyze introns
+dockerusr="1025:1025" #user id
+dir="/user/name" #The folder which docker mount
+ref="/user/refdata-gex-GRCh38-2020-A" #Reference genome path
+cellrangerpath="/home/bin/cellranger-7.1.0/cellranger" #software path of cellranger
+expectcell=10000 #expect cell number
+localcores=32 #Number of threads
+localmem=64 #Memory size
+include_introns="false" #Whether to analyze introns
 
 #####[step1]:
-filetype="10x"#The format of the input file,could be "10x" or "csv"
-csv_sep=""#Separator of the csv file
-nFeature_RNA=[200,5000]#The cells were filtered by feature, keeping cells that feature between 200 and 5000 
-percent_mt=[0,10]#The cells were filtered by percent of mitochondria, keeping cells that percent of mitochondria less than 10%
-mttype="MT"#Mitochondrial type, MT for humans and mt for mice
+filetype="10x" #The format of the input file,could be "10x" or "csv"
+csv_sep="" #Separator of the csv file
+nFeature_RNA=[200,5000] #The cells were filtered by feature, keeping cells that feature between 200 and 5000 
+percent_mt=[0,10] #The cells were filtered by percent of mitochondria, keeping cells that percent of mitochondria less than 10%
+mttype="MT" #Mitochondrial type, MT for humans and mt for mice
 
 #####[step2]:
-kfilter=200#Minimum number of cells per sample
-normethod="SCT"#The merge method, which uses SCT by default, can also use vst to simply group samples together
-nFeature=3000#Genes for subsequent analysis
+kfilter=200 #Minimum number of cells per sample
+normethod="SCT" #The merge method, which uses SCT by default, can also use vst to simply group samples together
+nFeature=3000 #Genes for subsequent analysis
 
 #####[step3]:
-recluster=true#Whether to perform batch correction
-mode="harmony"#Method of batch correction
-heatmapnumber=9#Number of heatmaps drawn for pca
-elbowdims=100#The number of PCS shown in the elbow diagram
-dims=30#Select the top 30 PCs for dimensionality reduction
-reduction="umap"#tSNE or UMAP
-clustercell=true#Whether you need to cluster cells
-resolution=0.6#Set the resolution when clustering
-algorithm=1#Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm)
-singler="/home/bin/singleRdata/singleRdata/test.rds"#singleR database position
+recluster=true #Whether to perform batch correction
+mode="harmony" #Method of batch correction
+heatmapnumber=9 #Number of heatmaps drawn for pca
+elbowdims=100 #The number of PCS shown in the elbow diagram
+dims=30 #Select the top 30 PCs for dimensionality reduction
+reduction="umap" #tSNE or UMAP
+clustercell=true #Whether you need to cluster cells
+resolution=0.6 #Set the resolution when clustering
+algorithm=1 #Cluster modular optimization algorithm (1 = original Louvain algorithm; 2 = Louvain algorithm with multilevel refinement; 3 = SLM algorithm)
+singler="/home/bin/singleRdata/singleRdata/test.rds" #singleR database position
 
 #####[step4]:
-clustermarkers=true#Whether marker genes of each cluster need to be found
-min_pct=0.25#The minimum proportion of marker gene in the number of cells is 0.25 by default
-findmarkers_testuse="wilcox"#The method of finding marker gene
-difcluster.test.a=[0,1]#Find Differential gene.If you want to find differences between samples,change cluster to ident
-difcluster.test.b=[5,6]#Test indicates the group name, a for case and b for control
-difcluster.test.testuse="wilcox"#Inspection method
-ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 6 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of difference analysis results. -a: Whether to use all background genes; -s: species; -g: The column of the gene in the file; -t: gene name type(SYMBOL,ENTREZID); -d: database name
+clustermarkers=true #Whether marker genes of each cluster need to be found
+min_pct=0.25 #The minimum proportion of marker gene in the number of cells is 0.25 by default
+findmarkers_testuse="wilcox" #The method of finding marker gene
+difcluster.test.a=[0,1] #Find Differential gene.If you want to find differences between samples,change cluster to ident
+difcluster.test.b=[5,6] #Test indicates the group name, a for case and b for control
+difcluster.test.testuse="wilcox" #Inspection method
+ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 6 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"] #Enrichment analysis of difference analysis results. -a: Whether to use all background genes; -s: species; -g: The column of the gene in the file; -t: gene name type(SYMBOL,ENTREZID); -d: database name
 
 #####[step5]:
-meanexpression=0.5#Select the appropriate gene to mark the state, intercept the condition, default is 0.5
-genenum=50#Number of gene in differential analysis heat map
-numclusters=4#The number of clusters in a cluster
-pointid=1#The branching points used in BEAM analysis
-BEAMnumclusters=4#Number of clusters in heat map clustering
-BEAMgn=50#BEAM analyzes heat map gene count
-BEAMgenelist=["S100A12", "ALOX5AP", "PAD14", "NRG1", "MCEMP1", "THBS1","testgene"]#BEAM analyzes specific gene names
+meanexpression=0.5 #Select the appropriate gene to mark the state, intercept the condition, default is 0.5
+genenum=50 #Number of gene in differential analysis heat map
+numclusters=4 #The number of clusters in a cluster
+pointid=1 #The branching points used in BEAM analysis
+BEAMnumclusters=4 #Number of clusters in heat map clustering
+BEAMgn=50 #BEAM analyzes heat map gene count
+BEAMgenelist=["S100A12","ALOX5AP","PAD14","NRG1","MCEMP1","THBS1"] #BEAM analyzes specific gene names
 
 #####[step6]:
-circosbin="/home/bin/get_exp.r"#Extraction expression
-circos_perl_bin="/home/bin/circos_plot.pl"#Plot circos
+circosbin="/home/bin/get_exp.r" #Extraction expression
+circos_perl_bin="/home/bin/circos_plot.pl" #Plot circos
 
 #####[step7]:
-copykat_bin="/home/bin/copykat_v4.r"#Identify tumor cells
+copykat_bin="/home/bin/copykat_v4.r" #Identify tumor cells
 
 #####[step8]:
-cytoTRACE_bin="/home/bin/cytotrace_230508.R"#Developmental potential analysis
+cytoTRACE_bin="/home/bin/cytotrace_230508.R" #Developmental potential analysis
 
 #####[step9]:
-genomicinstably_bin="/home/bin/genomicinstably.R"Genomic instability analysist
-org="human"#species
+genomicinstably_bin="/home/bin/genomicinstably.R" #Genomic instability analysist
+org="human" #species
 
 #####[step11]:
-ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"]#Enrichment analysis of marker gene
+ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"] #Enrichment analysis of marker gene
 ```
 
 ### 2. Filtered data by fastp and cellranger
@@ -153,12 +153,12 @@ Rscript /home/bin/singlecell.r -i config_Example.ini
 
 ## C. Result
 
-### 1. fastp
+### 1. Fastp
 
 Sequence statistics and reads filtering result files were performed on the original data.
 
 ```bash
-── 01.fastp/
+── 01.Fastp/
      └── <SampleName>/                                  <- config for report
             ├── <SampleName>_fastp.html                 <- Report generated by fastp
             ├── <SampleName>_fastp.json                 <- Statistical information generated by fastp
@@ -446,56 +446,34 @@ The bubble plot for KEGG enriched analysis.
 
 
 
-
-
 #### Citations:
+[1] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
+[2] scRNA-tools. https://www.scrna -tools.org/.
+[3] R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+[4] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
+[5] Chen, Shifu, Yanqing Zhou, Yaru Chen, Jia Gu. 2018. “fastp: an ultra-fast all-in-one FASTQ preprocessor.” Bioinformatics 34: i884-i890. https://doi.org/10.1093/bioinformatics/bty560
+[6] Zheng, Grace X. Y., Jessica M. Terry, Phillip Belgrader, Paul Ryvkin, Zachary W. Bent, Ryan Wilson, Solongo B. Ziraldo, et al. 2017. “Massively parallel digital transcriptional profiling of single cells.” Nature Communications 8: 14049. https://doi.org/10.1038/ncomms14049
+[7] Hao, Yuhan, Stephanie Hao, Erica Andersen-Nissen, William M. Mauck, III, Shiwei Zheng, Andrew Butler, Maddie J. Lee, et al. 2021. “Integrated analysis of multimodal single-cell data.” Cell 184: 3573-3587.e3529. https://doi.org/10.1016/j.cell.2021.04.048
+[8] Qiu, Xiaojie, Andrew Hill, Jonathan Packer, Dejun Lin, Yi-An Ma, Cole Trapnell. 2017. “Single-cell mRNA quantification and differential analysis with Census.” Nature Methods 14: 309-315. https://doi.org/10.1038/nmeth.4150 
+[9] Dobin, Alexander, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, Thomas R. Gingeras. 2013. “STAR: ultrafast universal RNA-seq aligner.” Bioinformatics 29: 15-21. https://doi.org/10.1093/bioinformatics/bts635
+[10] McGinnis, Christopher S., Lyndsay M. Murrow, Zev J. Gartner. 2019. “DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors.” Cell Systems 8: 329-337.e324. https://doi.org/10.1016/j.cels.2019.03.003
+[11] Anders, Simon, Wolfgang Huber. 2010. “Differential expression analysis for sequence count data.” Genome Biology 11: R106. https://doi.org/10.1186/gb-2010-11-10-r106
+[12] Love, Michael I., Wolfgang Huber, Simon Anders. 2014. “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8
+[13] Korsunsky, Ilya, Nghia Millard, Jean Fan, Kamil Slowikowski, Fan Zhang, Kevin Wei, Yuriy Baglaenko, Michael Brenner, Po-ru Loh, Soumya Raychaudhuri. 2019. “Fast, sensitive and accurate integration of single-cell data with Harmony.” Nature Methods 16: 1289-1296. https://doi.org/10.1038/s41592-019-0619-0
+[14] Haghverdi, Laleh, Aaron T. L. Lun, Michael D. Morgan, John C. Marioni. 2018. “Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.” Nature Biotechnology 36: 421-427. https://doi.org/10.1038/nbt.4091
+[15] Tran, Hoa Thi Nhu, Kok Siong Ang, Marion Chevrier, Xiaomeng Zhang, Nicole Yee Shin Lee, Michelle Goh, Jinmiao Chen. 2020. “A benchmark of batch-effect correction methods for single-cell RNA sequencing data.” Genome Biology 21: 12. https://doi.org/10.1186/s13059-019-1850-9
+[16] Abdi, Hervé, Lynne J. Williams. 2010. “Principal component analysis.” WIREs Computational Statistics 2: 433-459. https://doi.org/https://doi.org/10.1002/wics.101 
+[17] McInnes, Leland, John Healy. 2018. “UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.” The Journal of Open Source Software 3: 861. https://doi.org/10.48550/arXiv.1802.03426
+[18] Becht, Etienne, Leland McInnes, John Healy, Charles-Antoine Dutertre, Immanuel W. H. Kwok, Lai Guan Ng, Florent Ginhoux, Evan W. Newell. 2019. “Dimensionality reduction for visualizing single-cell data using UMAP.” Nature Biotechnology 37: 38-44. https://doi.org/10.1038/nbt.4314
+[19] Laurens, Van Der Maaten, Geoffrey Hinton. 2008. “Visualizing Data using t-SNE.” Journal of Machine Learning Research 9: 2579-2605.
+[20] Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, Etienne Lefebvre. 2008. “Fast unfolding of communities in large networks.” Journal of Statistical Mechanics: Theory and Experiment 2008: P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008
+[21] Aran, Dvir, Agnieszka P. Looney, Leqian Liu, Esther Wu, Valerie Fong, Austin Hsu, Suzanna Chak, et al. 2019. “Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage.” Nature Immunology 20: 163-172. https://doi.org/10.1038/s41590-018-0276-y
+[22] Hillje, Roman, Pier Giuseppe Pelicci, Lucilla Luzi. 2020. “Cerebro: interactive visualization of scRNA-seq data.” Bioinformatics 36: 2311-2313. https://doi.org/10.1093/bioinformatics/btz877
+[23] Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, Benedikt Brors. 2014. “circlize implements and enhances circular visualization in R.” Bioinformatics 30: 2811-2812. https://doi.org/10.1093/bioinformatics/btu393
+[24] Wickham, Hadley. 2009. Ggplot2: Elegant Graphics for Data Analysis. https://doi.org/10.1007/978-0-387-98141-3
+[25] Gao, Ruli, Shanshan Bai, Ying C. Henderson, Yiyun Lin, Aislyn Schalck, Yun Yan, Tapsi Kumar, et al. 2021. “Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes.” Nature Biotechnology 39: 599-608. https://doi.org/10.1038/s41587-020-00795-2
+[26] Gulati, Gunsagar S., Shaheen S. Sikandar, Daniel J. Wesche, Anoop Manjunath, Anjan Bharadwaj, Mark J. Berger, Francisco Ilagan, et al. 2020. “Single-cell transcriptional diversity is a hallmark of developmental potential.” Science 367: 405-411. https://doi.org/10.1126/science.aax0249
+[27] Jin, Suoqin, Christian F. Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V. Plikus, Qing Nie. 2021. “Inference and analysis of cell-cell communication using CellChat.” Nature Communications 12: 1088. https://doi.org/10.1038/s41467-021-21246-9
+[28] Yu, Guangchuang, Li-Gen Wang, Yanyan Han, Qing-Yu He. 2012. “clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters.” OMICS: A Journal of Integrative Biology 16: 284-287. https://doi.org/10.1089/omi.2011.0118
+[29] Zhao, Juanjuan, Shuye Zhang, Yang Liu, Xiaomeng He, Mengmeng Qu, Gang Xu, Hongbo Wang, et al. 2020. “Single-cell RNA sequencing reveals the heterogeneity of liver-resident immune cells in human.” Cell Discovery 6: 22. https://doi.org/10.1038/s41421-020-0157-z
 
-[1]R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
-
-[2]Chen S, Zhou Y, Chen Y, Gu J. fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics. 2018;34(17):i884-i890.
-
-[3]Chen, Shifu. "Ultrafast one‐pass FASTQ data preprocessing, quality control, and deduplication using fastp." iMeta (2023): e107.
-
-[4]Zheng GX, Terry JM, Belgrader P, et al. Massively parallel digital transcriptional profiling of single cells. Nat Commun. 2017;8:14049. Published 2017 Jan 16.
-
-[5]Hao Y, Hao S, Andersen-Nissen E, et al. Integrated analysis of multimodal single-cell data. Cell. 2021;184(13):3573-3587.
-
-[6]Qiu X, Hill A, Packer J, Lin D, Ma YA, Trapnell C. Single-cell mRNA quantification and differential analysis with Census. Nat Methods. 2017;14(3):309-315. 
-
-[7]Zhao J, Zhang S, Liu Y, et al. Single-cell RNA sequencing reveals the heterogeneity of liver-resident immune cells in human. Cell Discov. 2020;6:22. Published 2020 Apr 28.
-
-[8]Abdi H, Williams LJ. Principal component analysis. Wiley Interdisciplinary Reviews: Computational Statistics. 2010;2:433–459. 
-
-[9]McInnes, L., Healy, J., Saul, N. & Großberger, L. UMAP: uniform manifold approximation and projection. J. Open Source Softw. 3, 861 (2018).
-
-[10]Van Der Maaten, L. & Hinton, G. Visualizing high-dimensional data using t-SNE. journal of machine learning research. J. Mach. Learn. Res. 9, 26 (2008).
-
-[11]Blondel, V. D., Guillaume, J.-L., Lambiotte, R. & Lefebvre, E. Fast unfolding of communities in large networks. J. Stat. Mech. 2008, P10008 (2008).
-
-[12]Aran D, Looney AP, Liu L, et al. Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage. Nat Immunol. 2019;20(2):163-172.
-
-[13]Hillje R, Pelicci PG, Luzi L. Cerebro: interactive visualization of scRNA-seq data. Bioinformatics. 2020;36(7):2311-2313.
-
-[14]Gu Z, Gu L, Eils R, Schlesner M, Brors B. circlize Implements and enhances circular visualization in R. Bioinformatics. 2014;30(19):2811-2812.
-
-[15]Wickham H. (2016) ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag, New York. ISBN 978-3-319-24277-4
-
-[16]Gao R, Bai S, Henderson YC, et al. Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes. _Nat Biotechnol_. 2021;39(5):599-608. 
-
-[17]Gulati GS, Sikandar SS, Wesche DJ, et al. Single-cell transcriptional diversity is a hallmark of developmental potential. _Science_. 2020;367(6476):405-411.
-
-[18]Jin S, Guerrero-Juarez CF, Zhang L, et al. Inference and analysis of cell-cell communication using CellChat. _Nat Commun_. 2021;12(1):1088. Published 2021 Feb 17.
-
-[19]Nust, D., Eddelbuettel, D., Bennett, D., Cannoodt, R., Clark, D., Daroczi, G., ... & Xiao, N. (2020). The Rockerverse: Packages and Applications for Containerisation with R. R JOURNAL, 12(1), 437-461.
-
-[20]Gao R, Bai S, Henderson YC, et al. Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes. _Nat Biotechnol_. 2021;39(5):599-608.
-
-[21]Gulati GS, Sikandar SS, Wesche DJ, et al. Single-cell transcriptional diversity is a hallmark of developmental potential. _Science_. 2020;367(6476):405-411.
-
-[22]Yu G, Wang LG, Han Y, He QY. clusterProfiler: an R package for comparing biological themes among gene clusters. OMICS. 2012;16(5):284-287.
-
-[23]Jin S, Guerrero-Juarez CF, Zhang L, et al. Inference and analysis of cell-cell communication using CellChat. _Nat Commun_. 2021;12(1):1088. Published 2021 Feb 17.
-
-[24]Haghverdi L, Lun ATL, Morgan MD, Marioni JC. Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors. Nat Biotechnol. 2018;36(5):421-427.
-
-[25]Korsunsky I, Millard N, Fan J, et al. Fast, sensitive and accurate integration of single-cell data with Harmony. Nat Methods. 2019;16(12):1289-1296.
