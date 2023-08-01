@@ -466,23 +466,41 @@ The bubble plot for KEGG enriched analysis.
 [9] Dobin, Alexander, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, Thomas R. Gingeras. 2013. “STAR: ultrafast universal RNA-seq aligner.” Bioinformatics 29: 15-21. https://doi.org/10.1093/bioinformatics/bts635
 
 [10] McGinnis, Christopher S., Lyndsay M. Murrow, Zev J. Gartner. 2019. “DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors.” Cell Systems 8: 329-337.e324. https://doi.org/10.1016/j.cels.2019.03.003
-[11] Anders, Simon, Wolfgang Huber. 2010. “Differential expression analysis for sequence count data.” Genome Biology 11: R106. https://doi.org/10.1186/gb-2010-11-10-r106
-[12] Love, Michael I., Wolfgang Huber, Simon Anders. 2014. “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8
-[13] Korsunsky, Ilya, Nghia Millard, Jean Fan, Kamil Slowikowski, Fan Zhang, Kevin Wei, Yuriy Baglaenko, Michael Brenner, Po-ru Loh, Soumya Raychaudhuri. 2019. “Fast, sensitive and accurate integration of single-cell data with Harmony.” Nature Methods 16: 1289-1296. https://doi.org/10.1038/s41592-019-0619-0
-[14] Haghverdi, Laleh, Aaron T. L. Lun, Michael D. Morgan, John C. Marioni. 2018. “Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.” Nature Biotechnology 36: 421-427. https://doi.org/10.1038/nbt.4091
-[15] Tran, Hoa Thi Nhu, Kok Siong Ang, Marion Chevrier, Xiaomeng Zhang, Nicole Yee Shin Lee, Michelle Goh, Jinmiao Chen. 2020. “A benchmark of batch-effect correction methods for single-cell RNA sequencing data.” Genome Biology 21: 12. https://doi.org/10.1186/s13059-019-1850-9
-[16] Abdi, Hervé, Lynne J. Williams. 2010. “Principal component analysis.” WIREs Computational Statistics 2: 433-459. https://doi.org/https://doi.org/10.1002/wics.101 
-[17] McInnes, Leland, John Healy. 2018. “UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.” The Journal of Open Source Software 3: 861. https://doi.org/10.48550/arXiv.1802.03426
-[18] Becht, Etienne, Leland McInnes, John Healy, Charles-Antoine Dutertre, Immanuel W. H. Kwok, Lai Guan Ng, Florent Ginhoux, Evan W. Newell. 2019. “Dimensionality reduction for visualizing single-cell data using UMAP.” Nature Biotechnology 37: 38-44. https://doi.org/10.1038/nbt.4314
-[19] Laurens, Van Der Maaten, Geoffrey Hinton. 2008. “Visualizing Data using t-SNE.” Journal of Machine Learning Research 9: 2579-2605.
-[20] Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, Etienne Lefebvre. 2008. “Fast unfolding of communities in large networks.” Journal of Statistical Mechanics: Theory and Experiment 2008: P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008
-[21] Aran, Dvir, Agnieszka P. Looney, Leqian Liu, Esther Wu, Valerie Fong, Austin Hsu, Suzanna Chak, et al. 2019. “Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage.” Nature Immunology 20: 163-172. https://doi.org/10.1038/s41590-018-0276-y
-[22] Hillje, Roman, Pier Giuseppe Pelicci, Lucilla Luzi. 2020. “Cerebro: interactive visualization of scRNA-seq data.” Bioinformatics 36: 2311-2313. https://doi.org/10.1093/bioinformatics/btz877
-[23] Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, Benedikt Brors. 2014. “circlize implements and enhances circular visualization in R.” Bioinformatics 30: 2811-2812. https://doi.org/10.1093/bioinformatics/btu393
-[24] Wickham, Hadley. 2009. Ggplot2: Elegant Graphics for Data Analysis. https://doi.org/10.1007/978-0-387-98141-3
-[25] Gao, Ruli, Shanshan Bai, Ying C. Henderson, Yiyun Lin, Aislyn Schalck, Yun Yan, Tapsi Kumar, et al. 2021. “Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes.” Nature Biotechnology 39: 599-608. https://doi.org/10.1038/s41587-020-00795-2
-[26] Gulati, Gunsagar S., Shaheen S. Sikandar, Daniel J. Wesche, Anoop Manjunath, Anjan Bharadwaj, Mark J. Berger, Francisco Ilagan, et al. 2020. “Single-cell transcriptional diversity is a hallmark of developmental potential.” Science 367: 405-411. https://doi.org/10.1126/science.aax0249
-[27] Jin, Suoqin, Christian F. Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V. Plikus, Qing Nie. 2021. “Inference and analysis of cell-cell communication using CellChat.” Nature Communications 12: 1088. https://doi.org/10.1038/s41467-021-21246-9
-[28] Yu, Guangchuang, Li-Gen Wang, Yanyan Han, Qing-Yu He. 2012. “clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters.” OMICS: A Journal of Integrative Biology 16: 284-287. https://doi.org/10.1089/omi.2011.0118
-[29] Zhao, Juanjuan, Shuye Zhang, Yang Liu, Xiaomeng He, Mengmeng Qu, Gang Xu, Hongbo Wang, et al. 2020. “Single-cell RNA sequencing reveals the heterogeneity of liver-resident immune cells in human.” Cell Discovery 6: 22. https://doi.org/10.1038/s41421-020-0157-z
 
+[11] Anders, Simon, Wolfgang Huber. 2010. “Differential expression analysis for sequence count data.” Genome Biology 11: R106. https://doi.org/10.1186/gb-2010-11-10-r106
+
+[12] Love, Michael I., Wolfgang Huber, Simon Anders. 2014. “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8
+
+[13] Korsunsky, Ilya, Nghia Millard, Jean Fan, Kamil Slowikowski, Fan Zhang, Kevin Wei, Yuriy Baglaenko, Michael Brenner, Po-ru Loh, Soumya Raychaudhuri. 2019. “Fast, sensitive and accurate integration of single-cell data with Harmony.” Nature Methods 16: 1289-1296. https://doi.org/10.1038/s41592-019-0619-0
+
+[14] Haghverdi, Laleh, Aaron T. L. Lun, Michael D. Morgan, John C. Marioni. 2018. “Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.” Nature Biotechnology 36: 421-427. https://doi.org/10.1038/nbt.4091
+
+[15] Tran, Hoa Thi Nhu, Kok Siong Ang, Marion Chevrier, Xiaomeng Zhang, Nicole Yee Shin Lee, Michelle Goh, Jinmiao Chen. 2020. “A benchmark of batch-effect correction methods for single-cell RNA sequencing data.” Genome Biology 21: 12. https://doi.org/10.1186/s13059-019-1850-9
+
+[16] Abdi, Hervé, Lynne J. Williams. 2010. “Principal component analysis.” WIREs Computational Statistics 2: 433-459. https://doi.org/https://doi.org/10.1002/wics.101 
+
+[17] McInnes, Leland, John Healy. 2018. “UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.” The Journal of Open Source Software 3: 861. https://doi.org/10.48550/arXiv.1802.03426
+
+[18] Becht, Etienne, Leland McInnes, John Healy, Charles-Antoine Dutertre, Immanuel W. H. Kwok, Lai Guan Ng, Florent Ginhoux, Evan W. Newell. 2019. “Dimensionality reduction for visualizing single-cell data using UMAP.” Nature Biotechnology 37: 38-44. https://doi.org/10.1038/nbt.4314
+
+[19] Laurens, Van Der Maaten, Geoffrey Hinton. 2008. “Visualizing Data using t-SNE.” Journal of Machine Learning Research 9: 2579-2605.
+
+[20] Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, Etienne Lefebvre. 2008. “Fast unfolding of communities in large networks.” Journal of Statistical Mechanics: Theory and Experiment 2008: P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008
+
+[21] Aran, Dvir, Agnieszka P. Looney, Leqian Liu, Esther Wu, Valerie Fong, Austin Hsu, Suzanna Chak, et al. 2019. “Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage.” Nature Immunology 20: 163-172. https://doi.org/10.1038/s41590-018-0276-y
+
+[22] Hillje, Roman, Pier Giuseppe Pelicci, Lucilla Luzi. 2020. “Cerebro: interactive visualization of scRNA-seq data.” Bioinformatics 36: 2311-2313. https://doi.org/10.1093/bioinformatics/btz877
+
+[23] Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, Benedikt Brors. 2014. “circlize implements and enhances circular visualization in R.” Bioinformatics 30: 2811-2812. https://doi.org/10.1093/bioinformatics/btu393
+
+[24] Wickham, Hadley. 2009. Ggplot2: Elegant Graphics for Data Analysis. https://doi.org/10.1007/978-0-387-98141-3
+
+[25] Gao, Ruli, Shanshan Bai, Ying C. Henderson, Yiyun Lin, Aislyn Schalck, Yun Yan, Tapsi Kumar, et al. 2021. “Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes.” Nature Biotechnology 39: 599-608. https://doi.org/10.1038/s41587-020-00795-2
+
+[26] Gulati, Gunsagar S., Shaheen S. Sikandar, Daniel J. Wesche, Anoop Manjunath, Anjan Bharadwaj, Mark J. Berger, Francisco Ilagan, et al. 2020. “Single-cell transcriptional diversity is a hallmark of developmental potential.” Science 367: 405-411. https://doi.org/10.1126/science.aax0249
+
+[27] Jin, Suoqin, Christian F. Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V. Plikus, Qing Nie. 2021. “Inference and analysis of cell-cell communication using CellChat.” Nature Communications 12: 1088. https://doi.org/10.1038/s41467-021-21246-9
+
+[28] Yu, Guangchuang, Li-Gen Wang, Yanyan Han, Qing-Yu He. 2012. “clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters.” OMICS: A Journal of Integrative Biology 16: 284-287. https://doi.org/10.1089/omi.2011.0118
+
+[29] Zhao, Juanjuan, Shuye Zhang, Yang Liu, Xiaomeng He, Mengmeng Qu, Gang Xu, Hongbo Wang, et al. 2020. “Single-cell RNA sequencing reveals the heterogeneity of liver-resident immune cells in human.” Cell Discovery 6: 22. https://doi.org/10.1038/s41421-020-0157-z
