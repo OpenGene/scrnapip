@@ -448,14 +448,23 @@ The bubble plot for KEGG enriched analysis.
 
 #### Citations:
 [1] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
+
 [2] scRNA-tools. https://www.scrna -tools.org/.
+
 [3] R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+
 [4] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
+
 [5] Chen, Shifu, Yanqing Zhou, Yaru Chen, Jia Gu. 2018. “fastp: an ultra-fast all-in-one FASTQ preprocessor.” Bioinformatics 34: i884-i890. https://doi.org/10.1093/bioinformatics/bty560
+
 [6] Zheng, Grace X. Y., Jessica M. Terry, Phillip Belgrader, Paul Ryvkin, Zachary W. Bent, Ryan Wilson, Solongo B. Ziraldo, et al. 2017. “Massively parallel digital transcriptional profiling of single cells.” Nature Communications 8: 14049. https://doi.org/10.1038/ncomms14049
+
 [7] Hao, Yuhan, Stephanie Hao, Erica Andersen-Nissen, William M. Mauck, III, Shiwei Zheng, Andrew Butler, Maddie J. Lee, et al. 2021. “Integrated analysis of multimodal single-cell data.” Cell 184: 3573-3587.e3529. https://doi.org/10.1016/j.cell.2021.04.048
+
 [8] Qiu, Xiaojie, Andrew Hill, Jonathan Packer, Dejun Lin, Yi-An Ma, Cole Trapnell. 2017. “Single-cell mRNA quantification and differential analysis with Census.” Nature Methods 14: 309-315. https://doi.org/10.1038/nmeth.4150 
+
 [9] Dobin, Alexander, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, Thomas R. Gingeras. 2013. “STAR: ultrafast universal RNA-seq aligner.” Bioinformatics 29: 15-21. https://doi.org/10.1093/bioinformatics/bts635
+
 [10] McGinnis, Christopher S., Lyndsay M. Murrow, Zev J. Gartner. 2019. “DoubletFinder: Doublet Detection in Single-Cell RNA Sequencing Data Using Artificial Nearest Neighbors.” Cell Systems 8: 329-337.e324. https://doi.org/10.1016/j.cels.2019.03.003
 [11] Anders, Simon, Wolfgang Huber. 2010. “Differential expression analysis for sequence count data.” Genome Biology 11: R106. https://doi.org/10.1186/gb-2010-11-10-r106
 [12] Love, Michael I., Wolfgang Huber, Simon Anders. 2014. “Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8
