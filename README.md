@@ -453,9 +453,9 @@ The bubble plot for KEGG enriched analysis.
 
 [3] R Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 
-[4] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
+[4] Chen, Shifu, Yanqing Zhou, Yaru Chen, Jia Gu. 2018. “fastp: an ultra-fast all-in-one FASTQ preprocessor.” Bioinformatics 34: i884-i890. https://doi.org/10.1093/bioinformatics/bty560
 
-[5] Chen, Shifu, Yanqing Zhou, Yaru Chen, Jia Gu. 2018. “fastp: an ultra-fast all-in-one FASTQ preprocessor.” Bioinformatics 34: i884-i890. https://doi.org/10.1093/bioinformatics/bty560
+[5] Chen,Shifu.2023.“Ultrafastone-passFASTQdatapreprocessing,qualitycontrol,and deduplicationusingfastp.”Imeta2:e107.https://doi.org/https://doi.org/10.1002/imt2.107
 
 [6] Zheng, Grace X. Y., Jessica M. Terry, Phillip Belgrader, Paul Ryvkin, Zachary W. Bent, Ryan Wilson, Solongo B. Ziraldo, et al. 2017. “Massively parallel digital transcriptional profiling of single cells.” Nature Communications 8: 14049. https://doi.org/10.1038/ncomms14049
 
