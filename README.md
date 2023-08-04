@@ -290,7 +290,7 @@ Heatmap of top 10 marker gene for each cluster.
 
 ### 6. Pseudotime
 
-To perform pseudotime analysis of the cells,we used monocle2 to select high discrete gene and draw trajectory diagram. By default, the first branch point is used for beam analysis.If you want to analyze other branch points, setting in the configuration file.
+To perform pseudotime analysis of the cells, we used monocle2 to select high discrete gene and draw trajectory diagram. By default, the first branch point is used for beam analysis.If you want to analyze other branch points, setting in the configuration file.
 
 ```bash
 ── 06.Pseudotime/
