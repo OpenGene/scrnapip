@@ -1,6 +1,5 @@
 **Single cell biological information analysis process**
 
-
 ### Introduction
 
 The types, states, and interactions of cells in human tissues vary greatly. Single-cell transcriptome sequencing (scRNA-seq) is a new technique for high-throughput sequencing analysis of the transcriptome in single cell. Single-cell transcriptome sequencing can complement conventional transcriptome sequencing (mRNA-seq: Batch RNA sequencing, comparing the average expression values of genes in all cells of the cell population), revealing the expression situation of all genes in the all-cause group in single cell, including the identified tissue cell types, reflecting the cell heterogeneity between different samples and the tissue microenvironment, so that we can better understand the real state and correlation of each cell in a Bulk tissue. Presents a real and comprehensive cellular world. Currently, single-cell transcriptome sequencing is mostly used in complex multicellular systems such as tumor, developmental, neural, and immune microenvironments.
@@ -44,7 +43,7 @@ All input files and parameters are set in this configuration file. The main sett
 #####[fastp_cellrange]: RAW data path. The pair end data must be split into two files
 S1.R1=["/usr/data/SAMPLE1_S1_L001_R1_001.fastq.gz"]
 S1.R2=["/usr/data/SAMPLE1_S1_L001_R2_001.fastq.gz"]
-#If a sample has more than one raw data,you can merge them before or add path split by ",":
+#If a sample has more than one raw data, you can merge them before or add path split by ",":
 S1.R1=["/usr/data/SAMPLE1.1_S1_L001_R1_001.fastq.gz","/usr/data/SAMPLE1.2_S1_L001_R1_001.fastq.gz"]
 S1.R2=["/usr/data/SAMPLE1.1_S1_L001_R2_001.fastq.gz","/usr/data/SAMPLE1.2_S1_L001_R2_001.fastq.gz"]
 
@@ -57,7 +56,7 @@ outpath="/usr/workout"
 #####[tempdata]rds file output path
 tempdata="workout"
 
-#####[run]: The analysis that needs to be done should set to true,for example:
+#####[run]: The analysis that needs to be done should set to true, for example:
 fastp=true #run fastp
 
 #####[fastp]: Configure the fastp path and parameters
@@ -296,9 +295,9 @@ To perform pseudotime analysis of the cells, we used monocle2 to select high dis
 ── 06.Pseudotime/
      ├── pseudotime /
      │    ├── geneplot.png/pdf                      <- Scatter plot for selecting high discrete gene
-     │    ├── pseudotime_byclusters.png/pdf         <- Cell trajectory plot,colors represent different clusters
-     │    ├── pseudotime_byPseudotime.png/pdf       <- Cell trajectory plot,colors represent the level of expression
-     │    ├── pseudotime_bystate.png/pdf            <- Cell trajectory plot,colors represent different state
+     │    ├── pseudotime_byclusters.png/pdf         <- Cell trajectory plot, colors represent different clusters
+     │    ├── pseudotime_byPseudotime.png/pdf       <- Cell trajectory plot, colors represent the level of expression
+     │    ├── pseudotime_bystate.png/pdf            <- Cell trajectory plot, colors represent different state
      │    ├── pseudotime_splitbyclusters.png/pdf    <- Cell trajectory plot split by clusters
      │    ├── pseudotime_splitbyorig.ident.png/pdf  <- Cell trajectory plot split by samples
      │    └── cell_state_clusters.xls               <- Cell state statistical table
