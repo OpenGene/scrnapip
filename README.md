@@ -320,7 +320,7 @@ Cell trajectory plot drawed by monocle.
 
 ### 7. Cerebro
 
-Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise. Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D, bar plot, violin plot, cluster tree etc.
+Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise. Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D, bar plot, violin plot, cluster tree, etc.
 
 ![cerebro](readme_files/cerebro.png)
 
