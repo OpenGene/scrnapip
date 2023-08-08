@@ -6,6 +6,8 @@ The types, states, and interactions of cells in human tissues vary greatly. Sing
 
 The purpose of this tool is connect the analysis of single-cell data into a complete process to accelerate the speed of analysis and contribute to the progress in this field.
 
+Tutorials link (document and video): https://github.com/OpenGene/scrnapip/tree/main/tutorials.
+
 ## A. Environment set up
 
 ### 1. Download docker
