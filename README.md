@@ -8,15 +8,15 @@ The purpose of this tool is connect the analysis of single-cell data into a comp
 
 Tutorials link (document and video): https://github.com/OpenGene/scrnapip/tree/main/tutorials.
 
-[toc]
+
 ## A. Environment set up
-[toc]
+
 ### 1. Download docker
 
 ```bash
 docker pull zhangjing12/scrnapip
 ```
-[toc]
+
 ### 2. Download reference genomic
 
 ```bash
@@ -25,7 +25,7 @@ wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
 #Mouse reference dataset required for Cell Ranger.
 wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
 ```
-[toc]
+
 ### 3. Use docker
 
 ```bash
@@ -35,9 +35,9 @@ docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youru
 The image is created based on Rocker (https://rocker-project.org/images/versioned/rstudio.html). You can use the above command to access rstudio through port 8787, which is more convenient for users to use the process. The userid and groupid can be queried through the id command. For the port number, please confirm whether the corresponding port is open.
 
 
-[toc]
+
 ## B. Start Workflow
-[toc]
+
 ### 1. Set config file
 
 All input files and parameters are set in this configuration file. The main settings that need to be changed are the following：
@@ -136,7 +136,7 @@ org="human" #species
 #####[step11]:
 ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"] #Enrichment analysis of marker gene
 ```
-[toc]
+
 ### 2. Filtered data by fastp and cellranger
 
 This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config_Example.ini.
@@ -144,7 +144,7 @@ This R script is used for data filtering and comparison quantitative analysis, a
 ```bash
 Rscript /home/bin/fastp_cellranger.r -i config_Example.ini
 ```
-[toc]
+
 ### 3. Seurat analysis
 
 This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config_Example.ini.
@@ -152,9 +152,9 @@ This R script is used for all advanced analyses, and relevant parameters are set
 ```bash
 Rscript /home/bin/singlecell.r -i config_Example.ini
 ```
-[toc]
+
 ## C. Result
-[toc]
+
 ### 1. Fastp
 
 Sequence statistics and reads filtering result files were performed on the original data.
@@ -171,7 +171,7 @@ Sequence statistics and reads filtering result files were performed on the origi
 ![fastp_summary](readme_files/fastp.png)
 
 Quality control summary statistics by fastp.
-[toc]
+
 ### 2. Cellranger
 
 Cellranger results after mapping and quantitative.
@@ -195,7 +195,7 @@ Cellranger results after mapping and quantitative.
 ![RNAseq Workflow](readme_files/cellranger_web_report.png)
 
 Cellranger web report.
-[toc]
+
 ### 3. CellFilter
 
 Filter low-quality cells according to mitochondrial proportion and gene number.
@@ -219,7 +219,7 @@ Scatter plot of feature and UMIs for all cells.Filter the cells outside the two 
 Scatter plot of  percent mitochondria and UMIs for all cells.Filter the cells above the red lines.
 
 
-[toc]
+
 ### 4. PCA_UMAP
 
 Dimensionality reduction and clustering to filtered cells.Annotate cells with singleR.
@@ -251,7 +251,7 @@ The distribution of samples in umap is shown. The dots represent cells, and samp
 ![singleR](readme_files/celltype.png)
 UMAP plot for cell type annotation.
 
-[toc]
+
 ### 5. MarkerGene
 
 Find marker genes and display result by violin and feature umap.
@@ -289,7 +289,6 @@ Umap plot of top10 marker gene  for each cluster.
 Heatmap of top 10 marker gene for each cluster.
 
 
-[toc]
 ### 6. Pseudotime
 
 To perform pseudotime analysis of the cells, we used monocle2 to select high discrete gene and draw trajectory diagram. By default, the first branch point is used for beam analysis. If you want to analyze other branch points, setting in the configuration file.
@@ -320,14 +319,14 @@ To perform pseudotime analysis of the cells, we used monocle2 to select high dis
 Cell trajectory plot drawed by monocle.
 
 
-[toc]
+
 ### 7. Cerebro
 
 Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise. Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D, bar plot, violin plot, cluster tree, etc.
 
 ![cerebro](readme_files/cerebro.png)
 
-[toc]
+
 ### 8. Copykat
 
 Copykat is used to perform copy number analysis and predict tumor cells. The umap plot is used to display the results.
@@ -363,7 +362,7 @@ Copykat (Copynumber Karyotyping of Tumors) is a computational tool using integra
 
 Heatmap of copykat prediction results.
 
-[toc]
+
 ### 9. CytoTRACE
 
 CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts and Expression) is a computational method that predicts the differentiation state of cells from single-cell RNA-sequencing data. CytoTRACE leverages a simple, yet robust, determinant of developmental potential—the number of detectably expressed genes per cell, or gene counts. CytoTRACE have been validated on ~150K single-cell transcriptomes spanning 315 cell phenotypes, 52 lineages, 14 tissue types, 9 scRNA-seq platforms, and 5 species.
@@ -381,7 +380,7 @@ CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts 
 
 Boxplots ordered by median cytotrace score.
 
-[toc]
+
 ### 10. GenomicInstability
 
 Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
@@ -397,7 +396,7 @@ Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively est
 
 The genomic Instability score density plot.
 
-[toc]
+
 ### 11. CellChat
 
 CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
@@ -415,7 +414,7 @@ CellChat, a tool that is able to quantitatively infer and analyze intercellular 
 
 <img src="readme_files/cellchat.png" title="" alt="cellchat" data-align="center">
 
-[toc]
+
 ### 12. ClusterProfiler
 
 Gene pathway enrichment analysis is to find a class of overexpressed genes in a set of genes. Here, based on five databases including BIOCARTA, BioCyc, GO, KEGG, and reactome, we perform enrichment analysis on the marker genes of the cluster respectively.
@@ -448,11 +447,11 @@ Barplot with significantly enriched GO terms.
 
 The bubble plot for KEGG enriched analysis.
 
-[toc]
+
 #### Citation:
 Xu, Limin, Jing Zhang, Yiqian He, Qianqian Yang, Tianhao Mu, Qiushi Guo, Yingqiang Li, Tian Tong, Shifu Chen, and Richard D.Ye. 2023. “ScRNAPip: A Systematic and Dynamic Pipeline for Single‐Cell RNA Sequencing Analysis.” iMeta e132. https://doi.org/10.1002/imt2.132
 
-[toc]
+
 #### Reference:
 [1] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
 
