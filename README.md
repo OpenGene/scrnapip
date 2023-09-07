@@ -444,10 +444,10 @@ Barplot with significantly enriched GO terms.
 
 The bubble plot for KEGG enriched analysis.
 
+#### Citation:
+Xu, Limin, Jing Zhang, Yiqian He, Qianqian Yang, Tianhao Mu, Qiushi Guo, Yingqiang Li, Tian Tong, Shifu Chen, and Richard D.Ye. 2023. “ScRNAPip: A Systematic and Dynamic Pipeline for Single‐Cell RNA Sequencing Analysis.” iMeta e132. https://doi.org/10.1002/imt2.132
 
-
-
-#### Citations:
+#### Reference:
 [1] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
 
 [2] scRNA-tools. https://www.scrna -tools.org/.
