@@ -1,6 +1,30 @@
 **Single cell biological information analysis process**
 
-### Introduction
+# Introduction
+- [Introduction](#introduction)
+- [A. Environment set up](#a-environment-set-up)
+  - [1. Download docker](#1-download-docker)
+  - [2. Download reference genomic](#2-download-reference-genomic)
+  - [3. Use docker](#3-use-docker)
+- [B. Start Workflow](#b-start-workflow)
+  - [1. Set config file](#1-set-config-file)
+  - [2. Filtered data by fastp and cellranger](#2-filtered-data-by-fastp-and-cellranger)
+  - [3. Seurat analysis](#3-seurat-analysis)
+- [C. Result](#c-result)
+  - [1. Fastp](#1-fastp)
+  - [2. Cellranger](#2-cellranger)
+  - [3. CellFilter](#3-cellfilter)
+  - [4. PCA\_UMAP](#4-pca_umap)
+  - [5. MarkerGene](#5-markergene)
+  - [6. Pseudotime](#6-pseudotime)
+  - [7. Cerebro](#7-cerebro)
+  - [8. Copykat](#8-copykat)
+  - [9. CytoTRACE](#9-cytotrace)
+  - [10. GenomicInstability](#10-genomicinstability)
+  - [11. CellChat](#11-cellchat)
+  - [12. ClusterProfiler](#12-clusterprofiler)
+- [Citation](#citation)
+- [Reference](#reference)
 
 The types, states, and interactions of cells in human tissues vary greatly. Single-cell transcriptome sequencing (scRNA-seq) is a new technique for high-throughput sequencing analysis of the transcriptome in single cell. Single-cell transcriptome sequencing can complement conventional transcriptome sequencing (mRNA-seq: Bulk RNA sequencing, comparing the average expression values of genes in all cells of the cell population), revealing the expression situation of all genes in the all-cause group in single cell, including the identified tissue cell types, reflecting the cell heterogeneity between different samples and the tissue microenvironment, so that we can better understand the real state and correlation of each cell in a Bulk tissue. Presents a real and comprehensive cellular world. Currently, single-cell transcriptome sequencing is mostly used in complex multicellular systems such as tumor, developmental, neural, and immune microenvironments.
 
@@ -9,15 +33,15 @@ The purpose of this tool is connect the analysis of single-cell data into a comp
 Tutorials link (document and video): https://github.com/OpenGene/scrnapip/tree/main/tutorials.
 
 
-## A. Environment set up
+# A. Environment set up
 
-### 1. Download docker
+## 1. Download docker
 
 ```bash
 docker pull zhangjing12/scrnapip
 ```
 
-### 2. Download reference genomic
+## 2. Download reference genomic
 
 ```bash
 #Human reference (GRCh38) dataset required for Cell Ranger.
@@ -26,7 +50,7 @@ wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
 wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
 ```
 
-### 3. Use docker
+## 3. Use docker
 
 ```bash
 docker run -d -p 1921:8787 -p 1882:3838 -e PASSWORD=yourpassword -e USERID=youruserid -e GROUPID=yourgroupid -v /yourdatapath:/dockerpath zhangjing12/scrnapip
@@ -36,11 +60,35 @@ The image is created based on Rocker (https://rocker-project.org/images/versione
 
 
 
-## B. Start Workflow
+# B. Start Workflow
 
-### 1. Set config file
+## 1. Set config file
 
-All input files and parameters are set in this configuration file. The main settings that need to be changed are the following：
+All input files and parameters are set in this configuration file. The main settings that need - [Introduction](#introduction)
+- [Introduction](#introduction)
+- [A. Environment set up](#a-environment-set-up)
+  - [1. Download docker](#1-download-docker)
+  - [2. Download reference genomic](#2-download-reference-genomic)
+  - [3. Use docker](#3-use-docker)
+- [B. Start Workflow](#b-start-workflow)
+  - [1. Set config file](#1-set-config-file)
+  - [2. Filtered data by fastp and cellranger](#2-filtered-data-by-fastp-and-cellranger)
+  - [3. Seurat analysis](#3-seurat-analysis)
+- [C. Result](#c-result)
+  - [1. Fastp](#1-fastp)
+  - [2. Cellranger](#2-cellranger)
+  - [3. CellFilter](#3-cellfilter)
+  - [4. PCA\_UMAP](#4-pca_umap)
+  - [5. MarkerGene](#5-markergene)
+  - [6. Pseudotime](#6-pseudotime)
+  - [7. Cerebro](#7-cerebro)
+  - [8. Copykat](#8-copykat)
+  - [9. CytoTRACE](#9-cytotrace)
+  - [10. GenomicInstability](#10-genomicinstability)
+  - [11. CellChat](#11-cellchat)
+  - [12. ClusterProfiler](#12-clusterprofiler)
+- [Citation](#citation)
+- [Reference](#reference)
 
 ```bash
 #####[fastp_cellrange]: RAW data path. The pair end data must be split into two files
@@ -137,7 +185,7 @@ org="human" #species
 ClusterProfiler=["true","Rscript","/home/bin/clusterProfiler.R","-a true -s org.Hs.eg.db,hsa,human -g 1 -t SYMBOL -d KEGG,BioCyc,PID,PANTHER,BIOCARTA -C 0.05"] #Enrichment analysis of marker gene
 ```
 
-### 2. Filtered data by fastp and cellranger
+## 2. Filtered data by fastp and cellranger
 
 This R script is used for data filtering and comparison quantitative analysis, and relevant parameters are set in the configuration file config_Example.ini.
 
@@ -145,7 +193,7 @@ This R script is used for data filtering and comparison quantitative analysis, a
 Rscript /home/bin/fastp_cellranger.r -i config_Example.ini
 ```
 
-### 3. Seurat analysis
+## 3. Seurat analysis
 
 This R script is used for all advanced analyses, and relevant parameters are set in the configuration file config_Example.ini.
 
@@ -153,9 +201,9 @@ This R script is used for all advanced analyses, and relevant parameters are set
 Rscript /home/bin/singlecell.r -i config_Example.ini
 ```
 
-## C. Result
+# C. Result
 
-### 1. Fastp
+## 1. Fastp
 
 Sequence statistics and reads filtering result files were performed on the original data.
 
@@ -172,7 +220,7 @@ Sequence statistics and reads filtering result files were performed on the origi
 
 Quality control summary statistics by fastp.
 
-### 2. Cellranger
+## 2. Cellranger
 
 Cellranger results after mapping and quantitative.
 
@@ -196,7 +244,7 @@ Cellranger results after mapping and quantitative.
 
 Cellranger web report.
 
-### 3. CellFilter
+## 3. CellFilter
 
 Filter low-quality cells according to mitochondrial proportion and gene number.
 
@@ -220,7 +268,7 @@ Scatter plot of  percent mitochondria and UMIs for all cells.Filter the cells ab
 
 
 
-### 4. PCA_UMAP
+## 4. PCA_UMAP
 
 Dimensionality reduction and clustering to filtered cells.Annotate cells with singleR.
 
@@ -252,7 +300,7 @@ The distribution of samples in umap is shown. The dots represent cells, and samp
 UMAP plot for cell type annotation.
 
 
-### 5. MarkerGene
+## 5. MarkerGene
 
 Find marker genes and display result by violin and feature umap.
 
@@ -289,7 +337,8 @@ Umap plot of top10 marker gene  for each cluster.
 Heatmap of top 10 marker gene for each cluster.
 
 
-### 6. Pseudotime
+
+## 6. Pseudotime
 
 To perform pseudotime analysis of the cells, we used monocle2 to select high discrete gene and draw trajectory diagram. By default, the first branch point is used for beam analysis. If you want to analyze other branch points, setting in the configuration file.
 
@@ -320,14 +369,13 @@ Cell trajectory plot drawed by monocle.
 
 
 
-### 7. Cerebro
+## 7. Cerebro
 
 Cerebro(cell report browser), which allows users to interactively visualize various parts of single cell transcriptomics data without requiring bioinformatic expertise. Cerebro can draw various graphs to display single cell results like umap/tsne for 2D/3D, bar plot, violin plot, cluster tree, etc.
 
 ![cerebro](readme_files/cerebro.png)
 
-
-### 8. Copykat
+## 8. Copykat
 
 Copykat is used to perform copy number analysis and predict tumor cells. The umap plot is used to display the results.
 
@@ -363,7 +411,7 @@ Copykat (Copynumber Karyotyping of Tumors) is a computational tool using integra
 Heatmap of copykat prediction results.
 
 
-### 9. CytoTRACE
+## 9. CytoTRACE
 
 CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts and Expression) is a computational method that predicts the differentiation state of cells from single-cell RNA-sequencing data. CytoTRACE leverages a simple, yet robust, determinant of developmental potential—the number of detectably expressed genes per cell, or gene counts. CytoTRACE have been validated on ~150K single-cell transcriptomes spanning 315 cell phenotypes, 52 lineages, 14 tissue types, 9 scRNA-seq platforms, and 5 species.
 
@@ -381,7 +429,7 @@ CytoTRACE (Cellular (Cyto) Trajectory Reconstruction Analysis using gene Counts 
 Boxplots ordered by median cytotrace score.
 
 
-### 10. GenomicInstability
+## 10. GenomicInstability
 
 Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively estimate the association between gene expression and chromosomal location by performing enrichment analysis of contiguously coded genes (loci-blocks) on the single cell gene expression profiles.
 
@@ -396,8 +444,7 @@ Genomic instability analysis (GIA) uses the aREA algorithm to quantitatively est
 
 The genomic Instability score density plot.
 
-
-### 11. CellChat
+## 11. CellChat
 
 CellChat, a tool that is able to quantitatively infer and analyze intercellular communication networks from single-cell RNA-sequencing (scRNA-seq) data. CellChat predicts major signaling inputs and outputs for cells and how those cells and signals coordinate for functions using network analysis and pattern recognition approaches. Through manifold learning and quantitative contrasts, CellChat classifies signaling pathways and delineates conserved and context-specific pathways across different datasets. 
 
@@ -414,8 +461,7 @@ CellChat, a tool that is able to quantitatively infer and analyze intercellular 
 
 <img src="readme_files/cellchat.png" title="" alt="cellchat" data-align="center">
 
-
-### 12. ClusterProfiler
+## 12. ClusterProfiler
 
 Gene pathway enrichment analysis is to find a class of overexpressed genes in a set of genes. Here, based on five databases including BIOCARTA, BioCyc, GO, KEGG, and reactome, we perform enrichment analysis on the marker genes of the cluster respectively.
 
@@ -447,12 +493,10 @@ Barplot with significantly enriched GO terms.
 
 The bubble plot for KEGG enriched analysis.
 
-
-#### Citation:
+# Citation
 Xu, Limin, Jing Zhang, Yiqian He, Qianqian Yang, Tianhao Mu, Qiushi Guo, Yingqiang Li, Tian Tong, Shifu Chen, and Richard D.Ye. 2023. “ScRNAPip: A Systematic and Dynamic Pipeline for Single‐Cell RNA Sequencing Analysis.” iMeta e132. https://doi.org/10.1002/imt2.132
 
-
-#### Reference:
+# Reference
 [1] Griffiths, Jonathan A., Antonio Scialdone, John C. Marioni. 2018. “Using single-cell genomics to understand developmental processes and cell fate decisions.” Molecular Systems Biology 14: e8046. https://doi.org/https://doi.org/10.15252/msb.20178046
 
 [2] scRNA-tools. https://www.scrna -tools.org/.
@@ -482,31 +526,59 @@ Xu, Limin, Jing Zhang, Yiqian He, Qianqian Yang, Tianhao Mu, Qiushi Guo, Yingqia
 [14] Haghverdi, Laleh, Aaron T. L. Lun, Michael D. Morgan, John C. Marioni. 2018. “Batch effects in single-cell RNA-sequencing data are corrected by matching mutual nearest neighbors.” Nature Biotechnology 36: 421-427. https://doi.org/10.1038/nbt.4091
 
 [15] Tran, Hoa Thi Nhu, Kok Siong Ang, Marion Chevrier, Xiaomeng Zhang, Nicole Yee Shin Lee, Michelle Goh, Jinmiao Chen. 2020. “A benchmark of batch-effect correction methods for single-cell RNA sequencing data.” Genome Biology 21: 12. https://doi.org/10.1186/s13059-019-1850-9
+        
+        
 
-[16] Abdi, Hervé, Lynne J. Williams. 2010. “Principal component analysis.” WIREs Computational Statistics 2: 433-459. https://doi.org/https://doi.org/10.1002/wics.101 
+[16] Abdi, Hervé, Lynne J. Williams. 2010. “Principal component analysis.” WIREs Computational Statistics 2: 433-459. https://doi.org/https://doi.org/10.1002/wics.101
+        
+         
 
 [17] McInnes, Leland, John Healy. 2018. “UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.” The Journal of Open Source Software 3: 861. https://doi.org/10.48550/arXiv.1802.03426
+        
+        
 
 [18] Becht, Etienne, Leland McInnes, John Healy, Charles-Antoine Dutertre, Immanuel W. H. Kwok, Lai Guan Ng, Florent Ginhoux, Evan W. Newell. 2019. “Dimensionality reduction for visualizing single-cell data using UMAP.” Nature Biotechnology 37: 38-44. https://doi.org/10.1038/nbt.4314
+        
+        
 
 [19] Laurens, Van Der Maaten, Geoffrey Hinton. 2008. “Visualizing Data using t-SNE.” Journal of Machine Learning Research 9: 2579-2605.
 
 [20] Blondel, Vincent D., Jean-Loup Guillaume, Renaud Lambiotte, Etienne Lefebvre. 2008. “Fast unfolding of communities in large networks.” Journal of Statistical Mechanics: Theory and Experiment 2008: P10008. https://doi.org/10.1088/1742-5468/2008/10/P10008
+        
+        
 
 [21] Aran, Dvir, Agnieszka P. Looney, Leqian Liu, Esther Wu, Valerie Fong, Austin Hsu, Suzanna Chak, et al. 2019. “Reference-based analysis of lung single-cell sequencing reveals a transitional profibrotic macrophage.” Nature Immunology 20: 163-172. https://doi.org/10.1038/s41590-018-0276-y
+        
+        
 
 [22] Hillje, Roman, Pier Giuseppe Pelicci, Lucilla Luzi. 2020. “Cerebro: interactive visualization of scRNA-seq data.” Bioinformatics 36: 2311-2313. https://doi.org/10.1093/bioinformatics/btz877
+        
+        
 
 [23] Gu, Zuguang, Lei Gu, Roland Eils, Matthias Schlesner, Benedikt Brors. 2014. “circlize implements and enhances circular visualization in R.” Bioinformatics 30: 2811-2812. https://doi.org/10.1093/bioinformatics/btu393
+        
+        
 
 [24] Wickham, Hadley. 2009. Ggplot2: Elegant Graphics for Data Analysis. https://doi.org/10.1007/978-0-387-98141-3
+        
+        
 
 [25] Gao, Ruli, Shanshan Bai, Ying C. Henderson, Yiyun Lin, Aislyn Schalck, Yun Yan, Tapsi Kumar, et al. 2021. “Delineating copy number and clonal substructure in human tumors from single-cell transcriptomes.” Nature Biotechnology 39: 599-608. https://doi.org/10.1038/s41587-020-00795-2
+        
+        
 
 [26] Gulati, Gunsagar S., Shaheen S. Sikandar, Daniel J. Wesche, Anoop Manjunath, Anjan Bharadwaj, Mark J. Berger, Francisco Ilagan, et al. 2020. “Single-cell transcriptional diversity is a hallmark of developmental potential.” Science 367: 405-411. https://doi.org/10.1126/science.aax0249
+        
+        
 
 [27] Jin, Suoqin, Christian F. Guerrero-Juarez, Lihua Zhang, Ivan Chang, Raul Ramos, Chen-Hsiang Kuan, Peggy Myung, Maksim V. Plikus, Qing Nie. 2021. “Inference and analysis of cell-cell communication using CellChat.” Nature Communications 12: 1088. https://doi.org/10.1038/s41467-021-21246-9
+        
+        
 
 [28] Yu, Guangchuang, Li-Gen Wang, Yanyan Han, Qing-Yu He. 2012. “clusterProfiler: an R Package for Comparing Biological Themes Among Gene Clusters.” OMICS: A Journal of Integrative Biology 16: 284-287. https://doi.org/10.1089/omi.2011.0118
+        
+        
 
 [29] Zhao, Juanjuan, Shuye Zhang, Yang Liu, Xiaomeng He, Mengmeng Qu, Gang Xu, Hongbo Wang, et al. 2020. “Single-cell RNA sequencing reveals the heterogeneity of liver-resident immune cells in human.” Cell Discovery 6: 22. https://doi.org/10.1038/s41421-020-0157-z
+        
+        
